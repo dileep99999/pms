@@ -1,0 +1,109 @@
+<div class="container">
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <!-- Add your logo image here -->
+      <img src="assets/logo.png" alt="Logo" />
+    </div>
+    <div class="header-right">
+      <button (click)="toggleForm()" class="add-project-form" >New Project</button>  
+      <button class="profile-button">Profile</button>
+      <button class="logout-button">Logout</button>
+    </div>
+  </header>
+
+  <div class="sidebar">
+    <ul>
+      <li *ngFor="let project of projects" (click)="selectProject(project)">
+        {{ project.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <h2>Dashboard</h2>
+    <div class="card">
+      <h3>Total Projects</h3>
+      <p>{{ projects.length }}</p>
+    </div>
+    <div class="card" *ngFor="let project of projects">
+      <h3>{{ project.name }}</h3>
+      <p>Progress: {{ project.progress }}%</p>
+    </div>
+  </div>
+
+  <div class="overlay" *ngIf="showForm">
+    <div class="project-form">
+      <h2>New Project</h2>
+      <form #projectForm="ngForm" (ngSubmit)="addProject()">
+        <!-- Project details fields -->
+        <label for="projectName">Project Name:</label>
+        <input id="projectName" [(ngModel)]="newProjectDetails.name" name="name" required autocomplete="off">
+      
+        <label for="description">Description:</label>
+        <input id="description" [(ngModel)]="newProjectDetails.description" name="description" required autocomplete="off">
+      
+        <label for="manager">Manager:</label>
+        <input id="manager" [(ngModel)]="newProjectDetails.manager" name="manager" required autocomplete="off">
+      
+        <label for="status">Status:</label>
+        <input id="status" [(ngModel)]="newProjectDetails.status" name="status" required autocomplete="off">
+      
+        <label for="startDate">Start Date:</label>
+        <input id="startDate" [(ngModel)]="newProjectDetails.startDate" name="startDate" type="date" required autocomplete="off">
+      
+        <label for="endDate">End Date:</label>
+        <input id="endDate" [(ngModel)]="newProjectDetails.endDate" name="endDate" type="date" required autocomplete="off">
+      
+        <label for="customer">Customer:</label>
+        <input id="customer" [(ngModel)]="newProjectDetails.customer" name="customer" required autocomplete="off">
+      
+        <label for="targetDeliveryDate">Target Delivery Date:</label>
+        <input id="targetDeliveryDate" [(ngModel)]="newProjectDetails.targetDeliveryDate" name="targetDeliveryDate" type="date" required autocomplete="off">
+      
+        <label for="projectSize">Project Size:</label>
+        <select id="projectSize" [(ngModel)]="newProjectDetails.projectSize" name="projectSize" required>
+          <option value="Large">Large</option>
+          <option value="Medium">Medium</option>
+          <option value="Small">Small</option>
+        </select>
+      
+        <label for="region">Region:</label>
+        <input id="region" [(ngModel)]="newProjectDetails.region" name="region" required autocomplete="off">
+      
+        <!-- Internal Team -->
+        <label>Internal Team:</label>
+        <div *ngFor="let member of newProjectDetails.internalTeam; let i = index" class="team-member">
+          <input [(ngModel)]="member.name" name="internalTeamName{{i}}" placeholder="Name" autocomplete="off">
+          <input [(ngModel)]="member.role" name="internalTeamRole{{i}}" placeholder="Role" autocomplete="off">
+          <button type="button" (click)="removeInternalTeamMember(i)">Remove</button>
+        </div>
+        <button type="button" (click)="addInternalTeamMember()">Add Internal Team Member</button>
+      
+        <!-- External Team -->
+        <label>External Team:</label>
+        <div *ngFor="let member of newProjectDetails.externalTeam; let i = index" class="team-member">
+          <input [(ngModel)]="member.name" name="externalTeamName{{i}}" placeholder="Name" autocomplete="off">
+          <input [(ngModel)]="member.contribution" name="externalTeamContribution{{i}}" placeholder="Contribution" autocomplete="off">
+          <button type="button" (click)="removeExternalTeamMember(i)">Remove</button>
+        </div>
+        <button type="button" (click)="addExternalTeamMember()">Add External Team Member</button>
+      
+        <!-- Outsourced Jobs -->
+        <label>Outsourced Jobs:</label>
+        <div *ngFor="let job of newProjectDetails.outsourcedJobs; let i = index" class="outsourced-job">
+          <input [(ngModel)]="job.task" name="outsourcedJobTask{{i}}" placeholder="Task" autocomplete="off">
+          <input [(ngModel)]="job.deadline" name="outsourcedJobDeadline{{i}}" type="date" placeholder="Deadline" autocomplete="off">
+          <input [(ngModel)]="job.responsible" name="outsourcedJobResponsible{{i}}" placeholder="Responsible" autocomplete="off">
+          <button type="button" (click)="removeOutsourcedJob(i)">Remove</button>
+        </div>
+        <button type="button" (click)="addOutsourcedJob()">Add Outsourced Job</button>
+      
+        <div class="form-buttons">
+          <button type="submit">Save Project</button>
+          <button type="button" class="cancel" (click)="toggleForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

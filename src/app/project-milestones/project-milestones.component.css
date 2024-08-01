@@ -1,0 +1,70 @@
+.container {
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+.timeline {
+  margin-bottom: 20px;
+}
+
+.kanban-board {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  width: 30%;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.milestone-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.priority-high {
+  border-left: 5px solid red;
+}
+
+.priority-medium {
+  border-left: 5px solid orange;
+}
+
+.priority-low {
+  border-left: 5px solid green;
+}
+
+.remove-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.add-button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.editing .milestone-item input,
+.editing .milestone-item select {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.submit-container {
+  margin-top: 20px;
+}

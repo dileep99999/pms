@@ -1,0 +1,68 @@
+<div class="container" *ngIf="efficiencySkills">
+    <div *ngIf="!isEditing">
+      <h2>Skill Matrix</h2>
+      <ul>
+        <li *ngFor="let skill of efficiencySkills.skillMatrix">
+          <strong>Skill:</strong> {{ skill.skill }} |
+          <strong>Required:</strong> {{ skill.required ? 'Yes' : 'No' }} |
+          <strong>Team Members:</strong> {{ skill.teamMembers.join(', ') }}
+        </li>
+      </ul>
+  
+      <h2>Software/Tools</h2>
+      <ul>
+        <li *ngFor="let tool of efficiencySkills.softwareTools">
+          <strong>Name:</strong> {{ tool.name }} |
+          <strong>Version:</strong> {{ tool.version }} |
+          <strong>Licensing:</strong> {{ tool.licensing }}
+        </li>
+      </ul>
+  
+      <h2>Dependencies</h2>
+      <ul>
+        <li *ngFor="let dependency of efficiencySkills.dependencies">
+          <strong>Task:</strong> {{ dependency.task }} |
+          <strong>Dependent On:</strong> {{ dependency.dependentOn }}
+        </li>
+      </ul>
+  
+      <button (click)="enableEditing()">Update</button>
+    </div>
+  
+    <div *ngIf="isEditing" class="editing">
+      <h2>Skill Matrix</h2>
+      <ul>
+        <li *ngFor="let skill of efficiencySkills.skillMatrix; let i = index">
+          <strong>Skill:</strong> <input [(ngModel)]="skill.skill" placeholder="Skill Name" />
+          <input type="checkbox" [(ngModel)]="skill.required" /> Required
+          <input [(ngModel)]="skill.teamMembers" placeholder="Team Members (comma separated)" />
+          <button class="remove-button" (click)="removeSkill(i)">Remove</button>
+        </li>
+      </ul>
+      <button class="add-button" (click)="addSkill()">Add Skill</button>
+  
+      <h2>Software/Tools</h2>
+      <ul>
+        <li *ngFor="let tool of efficiencySkills.softwareTools; let i = index">
+          <strong>Name:</strong> <input [(ngModel)]="tool.name" placeholder="Tool Name" />
+          <strong>Version:</strong> <input [(ngModel)]="tool.version" placeholder="Version" />
+          <strong>Licensing:</strong> <input [(ngModel)]="tool.licensing" placeholder="Licensing Info" />
+          <button class="remove-button" (click)="removeSoftwareTool(i)">Remove</button>
+        </li>
+      </ul>
+      <button class="add-button" (click)="addSoftwareTool()">Add Software/Tool</button>
+  
+      <h2>Dependencies</h2>
+      <ul>
+        <li *ngFor="let dependency of efficiencySkills.dependencies; let i = index">
+          <strong>Task:</strong> <input [(ngModel)]="dependency.task" placeholder="Task" />
+          <strong>Dependent On:</strong> <input [(ngModel)]="dependency.dependentOn" placeholder="Dependency" />
+          <button class="remove-button" (click)="removeDependency(i)">Remove</button>
+        </li>
+      </ul>
+      <button class="add-button" (click)="addDependency()">Add Dependency</button>
+  
+      <button (click)="submitChanges()">Submit Changes</button>
+    </div>
+  </div>
+  

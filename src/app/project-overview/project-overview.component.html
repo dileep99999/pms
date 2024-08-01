@@ -1,0 +1,31 @@
+<div class="container" *ngIf="project">
+  <div *ngIf="!isEditing">
+    <h2>Project Overview</h2>
+    <p><strong>Project Name:</strong> {{ project.name }}</p>
+    <p><strong>Description:</strong> {{ project.description }}</p>
+    <p><strong>Manager:</strong> {{ project.manager }}</p>
+    <p><strong>Status:</strong> {{ project.status }}</p>
+    <p><strong>Start Date:</strong> {{ project.startDate | date }}</p>
+    <p><strong>End Date:</strong> {{ project.endDate | date }}</p>
+    <p><strong>Customer:</strong> {{ project.customer }}</p>
+    <p><strong>Target Delivery Date:</strong> {{ project.targetDeliveryDate | date }}</p>
+    <p><strong>Project Size:</strong> {{ project.projectSize }}</p>
+    <p><strong>Region:</strong> {{ project.region }}</p>
+    <button (click)="enableEditing()">Update</button>
+  </div>
+
+  <div *ngIf="isEditing" class="editing">
+    <h2>Project Overview</h2>
+    <p><strong>Project Name:</strong> <input [(ngModel)]="project.name" /></p>
+    <p><strong>Description:</strong> <input [(ngModel)]="project.description" /></p>
+    <p><strong>Manager:</strong> <input [(ngModel)]="project.manager" /></p>
+    <p><strong>Status:</strong> <input [(ngModel)]="project.status" /></p>
+    <p><strong>Start Date:</strong> <input [(ngModel)]="project.startDate" type="date" /></p>
+    <p><strong>End Date:</strong> <input [(ngModel)]="project.endDate" type="date" /></p>
+    <p><strong>Customer:</strong> <input [(ngModel)]="project.customer" /></p>
+    <p><strong>Target Delivery Date:</strong> <input [(ngModel)]="project.targetDeliveryDate" type="date" /></p>
+    <p><strong>Project Size:</strong> <input [(ngModel)]="project.projectSize" /></p>
+    <p><strong>Region:</strong> <input [(ngModel)]="project.region" /></p>
+    <button (click)="submitChanges()">Submit</button>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="container">
+  <header class="header">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Logo" />
+    </div>
+    <div class="header-right">
+      <button class="profile-button" (click)="navigatetoDashboard()">Dashboard</button>
+      <button class="profile-button">Profile</button>
+      <button class="logout-button">Logout</button>
+    </div>
+  </header>
+  <div [class.sidebar-closed]="sidebarClosed" class="sidebar bg-dark text-white" style="width: 280px;">
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a routerLink="overview" routerLinkActive="active" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+          Project Overview
+        </a>
+      </li>
+      <li>
+        <a routerLink="team-structure" routerLinkActive="active" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Team Structure
+        </a>
+      </li>
+      <li>
+        <a routerLink="project-health" routerLinkActive="active" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          Project Health
+        </a>
+      </li>
+      <li>
+        <a routerLink="project-milestones" routerLinkActive="active" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+          Project Milestones
+        </a>
+      </li>
+      <li>
+        <a routerLink="efficiency-skills" routerLinkActive="active" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+          Efficiency & Skills
+        </a>
+      </li>
+      <li>
+        <a routerLink="documentation" routerLinkActive="active" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+          Documentation
+        </a>
+      </li>
+      <li>
+        <a routerLink="communication" routerLinkActive="active" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Communication & Collaboration
+        </a>
+      </li>
+      <li>
+        <a routerLink="additional-considerations" routerLinkActive="active" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Additional Considerations
+        </a>
+      </li>
+    </ul>
+    <br>
+    <hr>  
+  </div>
+  <div [class.main-content-full]="sidebarClosed" class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

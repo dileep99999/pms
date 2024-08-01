@@ -1,0 +1,62 @@
+.container {
+    padding: 20px;
+  }
+  
+  h2 {
+    margin-top: 20px;
+    font-size: 1.5em;
+  }
+  
+  .percentage {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  .status-green {
+    color: #28a745; /* Green for on track */
+  }
+  
+  .status-yellow {
+    color: #ffc107; /* Yellow for at risk */
+  }
+  
+  .status-red {
+    color: #dc3545; /* Red for off track */
+  }
+  
+  .days-green {
+    color: #28a745; /* Green for more than 10 days remaining */
+  }
+  
+  .days-yellow {
+    color: #ffc107; /* Yellow for 10 days or less remaining */
+  }
+  
+  .days-red {
+    color: #dc3545; /* Red for negative days remaining */
+  }
+  
+  .editing {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .submit-container {
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

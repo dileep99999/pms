@@ -1,0 +1,38 @@
+.communication-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .internal-chat {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+  }
+  
+  .internal-chat h2 {
+    text-align: center;
+  }
+  
+  .internal-chat form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .internal-chat input {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .internal-chat .messages {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+  }
+  
+  .internal-chat .messages div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  

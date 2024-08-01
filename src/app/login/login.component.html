@@ -1,0 +1,28 @@
+
+  <div class="container">
+    <div class="image">
+     
+    </div>
+
+    <div class="content">
+      <div class="small-bird">
+        <img src="assets/logo.png" alt="">
+      </div>
+
+      <h1>Project Management System</h1>
+
+      <form (submit)="onSubmit()">
+        <div>
+          <input type="text" id="username" name="username" [(ngModel)]="username" required placeholder="Username" >
+        </div>
+        <div>
+          <input type="password" id="password" name="password" [(ngModel)]="password" required placeholder="Password">
+        </div>
+        <button mat-flat-button type="submit" class="btn btn-signup">Login</button>
+      </form>
+
+
+    </div>
+  </div>
+
+

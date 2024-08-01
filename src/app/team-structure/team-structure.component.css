@@ -1,0 +1,73 @@
+/* Container for the component */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 95vh; /* Full viewport height */
+  width: 80vw; /* Full viewport width */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box; /* Include padding and border in the element’s total width and height */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+
+/* Buttons */
+button.add-button, button.remove-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.add-button:hover, button.remove-button:hover {
+  background-color: #0056b3;
+}
+
+button.add-button:disabled, button.remove-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+button.remove-button {
+  background-color: #dc3545; /* Red for remove button */
+}
+
+button.remove-button:hover {
+  background-color: #c82333;
+}
+
+/* Submit Button */
+.submit-container {
+  margin-top: 20px;
+  position: sticky; /* Ensure it sticks to the bottom of the container */
+  bottom: 20px;
+  width: auto; /* Auto width to fit the button */
+  text-align: left; /* Align the text (button) to the left */
+  padding-left: 0px; /* Add padding from the left edge */
+}
+
+.submit-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: auto; /* Auto width to fit the button */
+  transition: background-color 0.3s ease;
+}
+
+.submit-container button:hover {
+  background-color: #0056b3;
+}
+
+.submit-container button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

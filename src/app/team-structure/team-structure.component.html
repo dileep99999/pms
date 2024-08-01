@@ -1,0 +1,56 @@
+<div class="container" *ngIf="project">
+  <div *ngIf="!isEditing">
+    <h2>Internal Team</h2>
+    <ul>
+      <li *ngFor="let member of project.internalTeam">
+        <strong>Name:</strong> {{ member.name }} | <strong>Role:</strong> {{ member.role }}
+      </li>
+    </ul>
+    <h2>External Team</h2>
+    <ul>
+      <li *ngFor="let member of project.externalTeam">
+        <strong>Name:</strong> {{ member.name }} | <strong>Contribution:</strong> {{ member.contribution }}
+      </li>
+    </ul>
+    <h2>Outsourced Jobs</h2>
+    <ul>
+      <li *ngFor="let job of project.outsourcedJobs">
+        <strong>Task:</strong> {{ job.task }} | <strong>Deadline:</strong> {{ job.deadline | date }} | <strong>Responsible:</strong> {{ job.responsible }}
+      </li>
+    </ul>
+    <button (click)="enableEditing()">Update</button>
+  </div>
+
+  <div *ngIf="isEditing" class="editing">
+    <h2>Internal Team</h2>
+    <ul>
+      <li *ngFor="let member of project.internalTeam; let i = index">
+        <strong>Name:</strong> <input [(ngModel)]="member.name" /> | <strong>Role:</strong> <input [(ngModel)]="member.role" />
+        <button class="remove-button" (click)="removeInternalTeamMember(i)">Remove</button>
+      </li>
+    </ul>
+    <button class="add-button" (click)="addInternalTeamMember()">Add Internal Team Member</button>
+
+    <h2>External Team</h2>
+    <ul>
+      <li *ngFor="let member of project.externalTeam; let i = index">
+        <strong>Name:</strong> <input [(ngModel)]="member.name" /> | <strong>Contribution:</strong> <input [(ngModel)]="member.contribution" />
+        <button class="remove-button" (click)="removeExternalTeamMember(i)">Remove</button>
+      </li>
+    </ul>
+    <button class="add-button" (click)="addExternalTeamMember()">Add External Team Member</button>
+
+    <h2>Outsourced Jobs</h2>
+    <ul>
+      <li *ngFor="let job of project.outsourcedJobs; let i = index">
+        <strong>Task:</strong> <input [(ngModel)]="job.task" /> | <strong>Deadline:</strong> <input [(ngModel)]="job.deadline" type="date" /> | <strong>Responsible:</strong> <input [(ngModel)]="job.responsible" />
+        <button class="remove-button" (click)="removeOutsourcedJob(i)">Remove</button>
+      </li>
+    </ul>
+    <button class="add-button" (click)="addOutsourcedJob()">Add Outsourced Job</button>
+
+    <div class="submit-container">
+      <button (click)="submitChanges()">Submit</button>
+    </div>
+  </div>
+</div>

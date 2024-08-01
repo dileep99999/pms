@@ -1,0 +1,68 @@
+<div class="container" *ngIf="projectMilestones">
+  <!-- Display Major Milestones -->
+  <div *ngIf="!isEditing">
+    <h2>Major Milestones</h2>
+    <div class="timeline">
+      <div *ngFor="let milestone of projectMilestones.majorMilestones; let i = index">
+        <strong>Milestone {{ milestone.number }}:</strong> {{ milestone.name }} |
+        <strong>Date:</strong> {{ milestone.date | date }}
+      </div>
+    </div>
+
+    <h2>Internal Milestones</h2>
+    <div class="kanban-board">
+      <div class="column" *ngFor="let status of ['To Do', 'In Progress', 'Done']">
+        <h3>{{ status }}</h3>
+        <div *ngFor="let milestone of projectMilestones.internalMilestones[status]; let i = index">
+          <div class="milestone-item" [ngClass]="getPriorityClass(milestone.priority)">
+            <strong>{{ milestone.name }}:</strong> {{ milestone.description }}
+            <!-- Remove button for internal milestones -->
+            <button class="remove-button" (click)="removeInternalMilestone(status, i)">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button (click)="enableEditing()">Update</button>
+  </div>
+
+  <!-- Editing Mode -->
+  <div *ngIf="isEditing" class="editing">
+    <h2>Major Milestones</h2>
+    <ul>
+      <li *ngFor="let milestone of projectMilestones.majorMilestones; let i = index">
+        <div class="milestone-item">
+          <strong>Milestone {{ milestone.number }}:</strong>
+          <input [(ngModel)]="milestone.name" placeholder="Name" />
+          <input [(ngModel)]="milestone.date" type="date" />
+          <button class="remove-button" (click)="removeMajorMilestone(i)">Remove</button>
+        </div>
+      </li>
+    </ul>
+    <button class="add-button" (click)="addMajorMilestone()">Add Major Milestone</button>
+
+    <h2>Internal Milestones</h2>
+    <div class="kanban-board">
+      <div class="column" *ngFor="let status of ['To Do', 'In Progress', 'Done']">
+        <h3>{{ status }}</h3>
+        <div *ngFor="let milestone of projectMilestones.internalMilestones[status]; let i = index">
+          <div class="milestone-item" [ngClass]="getPriorityClass(milestone.priority)">
+            <input [(ngModel)]="milestone.name" placeholder="Name" />
+            <input [(ngModel)]="milestone.description" placeholder="Description" />
+            <select [(ngModel)]="milestone.priority">
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+            <button class="remove-button" (click)="removeInternalMilestone(status, i)">Remove</button>
+          </div>
+        </div>
+        <button class="add-button" (click)="addInternalMilestone(status)">Add Internal Milestone</button>
+      </div>
+    </div>
+
+    <div class="submit-container">
+      <button (click)="submitChanges()">Submit</button>
+    </div>
+  </div>
+</div>
